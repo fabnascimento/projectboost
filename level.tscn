@@ -1,0 +1,32 @@
+[gd_scene load_steps=4 format=3 uid="uid://6ggimdukmi0a"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oivls"]
+albedo_color = Color(0.48528, 0.1296, 0.54, 1)
+metallic = 0.55
+metallic_specular = 0.62
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_eod4q"]
+albedo_color = Color(0.963496, 0.264945, 0.0450827, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xxx7w"]
+albedo_color = Color(0.177337, 0.752426, 3.85046e-07, 1)
+
+[node name="Node3D" type="Node3D"]
+
+[node name="Floor" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4, 0)
+use_collision = true
+size = Vector3(30, 8, 5)
+material = SubResource("StandardMaterial3D_oivls")
+
+[node name="LaunchingPad" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0.5, 0)
+use_collision = true
+size = Vector3(2, 1, 2)
+material = SubResource("StandardMaterial3D_eod4q")
+
+[node name="LandingPad" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0.5, 0)
+use_collision = true
+size = Vector3(2, 1, 2)
+material = SubResource("StandardMaterial3D_xxx7w")
