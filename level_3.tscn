@@ -1,7 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://6ggimdukmi0a"]
+[gd_scene load_steps=10 format=3 uid="uid://dsrat6dx3j6w1"]
 
-[ext_resource type="PackedScene" uid="uid://bp3uebntvfy38" path="res://player.tscn" id="1_4677u"]
-[ext_resource type="Script" path="res://scripts/LandingPad.gd" id="1_hifm3"]
+[ext_resource type="Script" path="res://scripts/LandingPad.gd" id="1_xhjab"]
+[ext_resource type="PackedScene" uid="uid://bp3uebntvfy38" path="res://player.tscn" id="2_d60dl"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_px231"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -20,6 +20,9 @@ glow_enabled = true
 albedo_color = Color(0.48528, 0.1296, 0.54, 1)
 metallic = 0.55
 metallic_specular = 0.62
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bjthi"]
+albedo_color = Color(0.0255322, 0.772826, 0.629399, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_eod4q"]
 albedo_color = Color(0.963496, 0.264945, 0.0450827, 1)
@@ -42,6 +45,12 @@ use_collision = true
 size = Vector3(50, 8, 5)
 material = SubResource("StandardMaterial3D_oivls")
 
+[node name="Floor2" type="CSGBox3D" parent="." groups=["obstacle"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.15174, 9.31777, 0)
+use_collision = true
+size = Vector3(12.7838, 2, 5)
+material = SubResource("StandardMaterial3D_bjthi")
+
 [node name="LaunchingPad" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0.25, 0)
 use_collision = true
@@ -53,11 +62,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0.25, 0)
 use_collision = true
 size = Vector3(2, 0.5, 2)
 material = SubResource("StandardMaterial3D_xxx7w")
-script = ExtResource("1_hifm3")
-file_path = "res://level_2.tscn"
+script = ExtResource("1_xhjab")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.984808, 0.173648, 0, -0.173648, 0.984808, 0, 7, 11)
 
-[node name="Player" parent="." instance=ExtResource("1_4677u")]
+[node name="Player" parent="." instance=ExtResource("2_d60dl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 1.5, 0)

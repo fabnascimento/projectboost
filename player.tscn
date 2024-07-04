@@ -1,6 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://bp3uebntvfy38"]
+[gd_scene load_steps=8 format=3 uid="uid://bp3uebntvfy38"]
 
 [ext_resource type="Script" path="res://scripts/Player.gd" id="1_o0wfm"]
+[ext_resource type="AudioStream" uid="uid://hbq8r5qfvpq3" path="res://sounds/SFX - Death Explosion.ogg" id="2_dv8fd"]
+[ext_resource type="AudioStream" uid="uid://h4x1ypkmkqw5" path="res://sounds/SFX - Success.ogg" id="3_lkjjb"]
+[ext_resource type="AudioStream" uid="uid://b3jkgy4s0rtvd" path="res://sounds/SFX - Main engine thrust.ogg" id="4_toc44"]
+[ext_resource type="PackedScene" uid="uid://ux6ivcx1ovdp" path="res://particles/booster_particles.tscn" id="5_qgqdl"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_6xe6u"]
 
@@ -21,5 +25,23 @@ mesh = SubResource("CylinderMesh_6xe6u")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CylinderShape3D_qyto8")
+
+[node name="ExplosionAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_dv8fd")
+
+[node name="SuccessAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_lkjjb")
+
+[node name="ThrustAudio" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("4_toc44")
+
+[node name="BoosterParticles" parent="." instance=ExtResource("5_qgqdl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+
+[node name="LeftBooster" parent="." instance=ExtResource("5_qgqdl")]
+transform = Transform3D(0.906308, 0.422618, 0, -0.422618, 0.906308, 0, 0, 0, 1, -0.406569, -1, 0)
+
+[node name="RightBooster" parent="." instance=ExtResource("5_qgqdl")]
+transform = Transform3D(0.906308, -0.422618, 0, 0.422618, 0.906308, 0, 0, 0, 1, 0.419684, -1, 0)
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
